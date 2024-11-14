@@ -1,27 +1,38 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "target": "ES2017", // Buen valor para Express
+    "lib": [
+      "esnext"
+    ], // Soporte para ESnext, pero solo lo necesario
+    "allowJs": true, // Permite archivos JS junto a TS si lo necesitas
+    "skipLibCheck": true, // Evitar chequeo de librerías
+    "strict": true, // Habilitar reglas estrictas
+    "noEmit": false, // Cambiar a false para permitir la compilación
+    "esModuleInterop": true, // Permitir importar módulos ES
+    "module": "commonjs", // Necesario para Node.js/Express
+    "moduleResolution": "node", // Resolver módulos al estilo de Node.js
+    "resolveJsonModule": true, // Permitir importar archivos JSON
+    "isolatedModules": true, // Asegura que cada archivo sea independiente
+    "jsx": "preserve", // Si usas React, si no lo usas cambia a "preserve"
+    "incremental": true, // Mejor rendimiento en compilaciones posteriores
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*.ts", // Asegúrate de incluir tu código TS
+    "src/**/*.tsx" // Si usas JSX en TSX
+    ,
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
